@@ -30,8 +30,8 @@ This Terraform configuration creates a configurable number of VMs (between 2 and
 
 ```bash
 terraform init
-terraform plan -var="vm_count=5" -out bosh.tfplan
-terraform apply "bosh.tfplan"
+terraform plan -var="vm_count=5" -out bosch.tfplan
+terraform apply "bosch.tfplan"
 ```
 
 This will create 5 VMs with the specified parameters and generate the output variables.
@@ -50,10 +50,10 @@ This will create 5 VMs with the specified parameters and generate the output var
 
 
 ```bash
-terraform apply "bosh.tfplan"
+terraform apply "bosch.tfplan"
 
-# azurerm_linux_virtual_machine.bosh-test-vm[0] will be created
-  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+# azurerm_linux_virtual_machine.bosch-test-vm[0] will be created
+  + resource "azurerm_linux_virtual_machine" "bosch-test-vm" {
       + admin_password                                         = (sensitive value)
       + admin_username                                         = (sensitive value)
       + allow_extension_operations                             = true
@@ -64,7 +64,7 @@ terraform apply "bosh.tfplan"
       + id                                                     = (known after apply)
       + location                                               = "westeurope"
       + max_bid_price                                          = -1
-      + name                                                   = "vm-bosh-test-0"
+      + name                                                   = "vm-bosch-test-0"
       + network_interface_ids                                  = (known after apply)
       + patch_assessment_mode                                  = "ImageDefault"
       + patch_mode                                             = "ImageDefault"
@@ -75,7 +75,7 @@ terraform apply "bosh.tfplan"
       + provision_vm_agent                                     = true
       + public_ip_address                                      = (known after apply)
       + public_ip_addresses                                    = (known after apply)
-      + resource_group_name                                    = "bosh-test-rg"
+      + resource_group_name                                    = "bosch-test-rg"
       + size                                                   = "Standard_B2s"
       + virtual_machine_id                                     = (known after apply)
 
@@ -103,23 +103,23 @@ terraform apply "bosh.tfplan"
         }
     }
 
-  # azurerm_linux_virtual_machine.bosh-test-vm[1] will be created
-  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+  # azurerm_linux_virtual_machine.bosch-test-vm[1] will be created
+  + resource "azurerm_linux_virtual_machine" "bosch-test-vm" {
      --------------------------
     }
 
-  # azurerm_linux_virtual_machine.bosh-test-vm[2] will be created
-  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+  # azurerm_linux_virtual_machine.bosch-test-vm[2] will be created
+  + resource "azurerm_linux_virtual_machine" "bosch-test-vm" {
  -----------------------
     }
 
-  # azurerm_linux_virtual_machine.bosh-test-vm[3] will be created
-  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+  # azurerm_linux_virtual_machine.bosch-test-vm[3] will be created
+  + resource "azurerm_linux_virtual_machine" "bosch-test-vm" {
   ------------------
     }
 
-  # azurerm_linux_virtual_machine.bosh-test-vm[4] will be created
-  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+  # azurerm_linux_virtual_machine.bosch-test-vm[4] will be created
+  + resource "azurerm_linux_virtual_machine" "bosch-test-vm" {
 --------------------
 )
 
