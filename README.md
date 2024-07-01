@@ -45,3 +45,113 @@ This will create 5 VMs with the specified parameters and generate the output var
 - The `azurerm_network_interface` and `azurerm_subnet` resources set up the virtual network for the VMs.
 - The `null_resource` resource performs round-robin ping tests between the VMs.
 - The `output` blocks expose the generated admin passwords and the round-robin ping test results.
+
+## Evidence
+
+
+```bash
+terraform apply "bosh.tfplan"
+
+# azurerm_linux_virtual_machine.bosh-test-vm[0] will be created
+  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = (sensitive value)
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "westeurope"
+      + max_bid_price                                          = -1
+      + name                                                   = "vm-bosh-test-0"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "bosh-test-rg"
+      + size                                                   = "Standard_B2s"
+      + virtual_machine_id                                     = (known after apply)
+
+      + boot_diagnostics {}
+
+      + identity {
+          + principal_id = (known after apply)
+          + tenant_id    = (known after apply)
+          + type         = "SystemAssigned"
+        }
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "0001-com-ubuntu-server-jammy"
+          + publisher = "Canonical"
+          + sku       = "22_04-lts"
+          + version   = "latest"
+        }
+    }
+
+  # azurerm_linux_virtual_machine.bosh-test-vm[1] will be created
+  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+     --------------------------
+    }
+
+  # azurerm_linux_virtual_machine.bosh-test-vm[2] will be created
+  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+ -----------------------
+    }
+
+  # azurerm_linux_virtual_machine.bosh-test-vm[3] will be created
+  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+  ------------------
+    }
+
+  # azurerm_linux_virtual_machine.bosh-test-vm[4] will be created
+  + resource "azurerm_linux_virtual_machine" "bosh-test-vm" {
+--------------------
+)
+
+
+
+Changes to Outputs:
+  + ping_results       = [
+      + {
+          + destination = "VM 1"
+          + result      = "#PASS"
+          + source      = "VM 0"
+        },
+      + {
+          + destination = "VM 2"
+          + result      = "#PASS"
+          + source      = "VM 1"
+        },
+      + {
+          + destination = "VM 3"
+          + result      = "#PASS"
+          + source      = "VM 2"
+        },
+      + {
+          + destination = "VM 4"
+          + result      = "#PASS"
+          + source      = "VM 3"
+        },
+      + {
+          + destination = "VM 0"
+          + result      = "#PASS"
+          + source      = "VM 4"
+        },
+    ]
+
+```
