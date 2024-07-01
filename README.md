@@ -30,7 +30,8 @@ This Terraform configuration creates a configurable number of VMs (between 2 and
 
 ```bash
 terraform init
-terraform apply -var="vm_count=5"
+terraform plan -var="vm_count=5" -out bosh.tfplan
+terraform apply "bosh.tfplan"
 ```
 
 This will create 5 VMs with the specified parameters and generate the output variables.
