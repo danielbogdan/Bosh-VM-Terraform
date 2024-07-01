@@ -129,27 +129,27 @@ Changes to Outputs:
   + ping_results       = [
       + {
           + destination = "VM 1"
-          + result      = "#PASS"
+          + result      = "PASS"
           + source      = "VM 0"
         },
       + {
           + destination = "VM 2"
-          + result      = "#PASS"
+          + result      = "PASS"
           + source      = "VM 1"
         },
       + {
           + destination = "VM 3"
-          + result      = "#PASS"
+          + result      = "PASS"
           + source      = "VM 2"
         },
       + {
           + destination = "VM 4"
-          + result      = "#PASS"
+          + result      = "PASS"
           + source      = "VM 3"
         },
       + {
           + destination = "VM 0"
-          + result      = "#PASS"
+          + result      = "PASS"
           + source      = "VM 4"
         },
     ]
